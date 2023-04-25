@@ -5,6 +5,11 @@ using UnityEngine;
 public class AStar : Dijkstra
 {
 
+    private void Update()
+    {
+        RunAndDisplayPath();
+    }
+
     public override void LogMessage(string text)
     {
         Debug.LogWarning("AStar: " + text);

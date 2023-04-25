@@ -44,6 +44,11 @@ public class Dijkstra : MonoBehaviour
         RunXTimes(1000);
     }
 
+    private void Update()
+    {
+        RunAndDisplayPath();
+    }
+
     protected void RunAndDisplayPath()
     {
         List<Node> path = FindShortestPath(StartNode, EndNode);
@@ -54,7 +59,7 @@ public class Dijkstra : MonoBehaviour
         {
             
             Debug.DrawLine(path[index].transform.position + Vector3.up, path[index + 1].transform.position + Vector3.up,
-                Color.red, 10f);
+                Color.blue, 0.1f);
 
             Debug.Log(path[index].gameObject.name);
         }
