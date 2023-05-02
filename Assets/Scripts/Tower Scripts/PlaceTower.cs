@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using Unity.VisualScripting;
 
 public class PlaceTower : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler, IDragHandler, IEndDragHandler
 {
@@ -14,11 +15,16 @@ public class PlaceTower : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     public GameObject towerType;
     public GameObject currentDrag;
+    public GameObject clickedCube;
+
+    private int layerNumber = 6;
+    private int layerMask;
 
 
     private void Start()
     {
         camera = Camera.main;
+        layerMask = 1 << layerNumber;
     }
 
 
@@ -64,21 +70,31 @@ public class PlaceTower : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     public void OnDrag(PointerEventData eventData)
     {
-        Vector3 worldMousePosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.nearClipPlane));
+        Vector3 worldMousePosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 12f)); // The z position is how close to the camera it is, may need to revise
         currentDrag.transform.position = worldMousePosition;
 
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
+
+        //If not hit, destroy clone.
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if(Physics.Raycast(ray, out hit))
+        if(Physics.Raycast(ray, out hit, 15f, layerMask ))
         {
+            Debug.Log("I HIT SOMETHING");
             //Check if object hit is a node box thingy
             Vector3 position = hit.transform.position;
             currentDrag.transform.position = position;
+
+            clickedCube = hit.collider.gameObject;
+            clickedCube.transform.GetChild(0).gameObject.SetActive(false);
+        }
+        else
+        {
+            Destroy(currentDrag);
         }
 
     }
