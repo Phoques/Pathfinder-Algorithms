@@ -535,9 +535,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   big: {x: 1.1, y: 1.1, z: 1.1}
   normal: {x: 1, y: 1, z: 1}
-  towerCard: {fileID: 234980891}
+  towerCard: {fileID: 0}
   hover: 0
   towerType: {fileID: 3420274166927340714, guid: 0e01b6013644f5345853dfdbd9c2da4d, type: 3}
+  currentDrag: {fileID: 0}
 --- !u!1 &235968604
 GameObject:
   m_ObjectHideFlags: 0
@@ -733,9 +734,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   big: {x: 1.1, y: 1.1, z: 1.1}
   normal: {x: 1, y: 1, z: 1}
-  towerCard: {fileID: 241835772}
+  towerCard: {fileID: 0}
   hover: 0
   towerType: {fileID: 2087621527941656380, guid: c8f8e6fedf33ec8469bba2a025ec61b6, type: 3}
+  currentDrag: {fileID: 0}
 --- !u!1 &242222230
 GameObject:
   m_ObjectHideFlags: 0
@@ -2133,6 +2135,7 @@ MonoBehaviour:
   towerCard: {fileID: 910053340}
   hover: 0
   towerType: {fileID: 2412918906385536811, guid: 41529aebc0789df4d93ec64d3678a2f5, type: 3}
+  currentDrag: {fileID: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -3173,6 +3176,7 @@ MonoBehaviour:
   towerCard: {fileID: 1715486646}
   hover: 0
   towerType: {fileID: 492525137067203374, guid: 673f1f47c1983f840b3932e34c65131b, type: 3}
+  currentDrag: {fileID: 0}
 --- !u!1 &1739663004
 GameObject:
   m_ObjectHideFlags: 0
