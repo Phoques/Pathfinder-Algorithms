@@ -70,7 +70,7 @@ public class PlaceTower : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     public void OnDrag(PointerEventData eventData)
     {
-        Vector3 worldMousePosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 12f)); // The z position is how close to the camera it is, may need to revise
+        Vector3 worldMousePosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 8f)); // The z position is how close to the camera it is, may need to revise
         currentDrag.transform.position = worldMousePosition;
 
     }
@@ -91,6 +91,10 @@ public class PlaceTower : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
             clickedCube = hit.collider.gameObject;
             clickedCube.transform.GetChild(0).gameObject.SetActive(false);
+
+
+
+
         }
         else
         {

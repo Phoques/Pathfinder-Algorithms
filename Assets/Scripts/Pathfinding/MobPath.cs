@@ -9,19 +9,18 @@ public class MobPath : Dijkstra
 {
     public Vector3 _endGoal;
     public Vector3 _startGoal;
-    private float speed = 1f;
+    private float speed = 0.5f;
     private int currentIndex = 0;
 
-    private void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
         MoveToObjective();
     }
+
+
+
 
 
     public void MoveToObjective()
