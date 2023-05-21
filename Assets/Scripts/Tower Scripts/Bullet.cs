@@ -5,9 +5,17 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     private Transform target;
-
     public float speed = 70f;
+    private int damage = 25;
 
+    EnemyHealth enemyHealth;
+
+
+
+    private void Start()
+    {
+        enemyHealth = FindObjectOfType<EnemyHealth>();
+    }
 
 
     private void Update()
@@ -37,8 +45,16 @@ public class Bullet : MonoBehaviour
 
     private void HitTarget()
     {
-        Destroy(gameObject) ;
+        Destroy(gameObject);
         Debug.Log("Hit Enemy");
+
+        enemyHealth.health -= damage;
+
+        if (enemyHealth.health <= 0)
+        {
+            Destroy(target.gameObject);
+        }
+
     }
 
 }

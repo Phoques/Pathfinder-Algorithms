@@ -13,7 +13,6 @@ public class MobPath : Dijkstra
     private int currentIndex = 0;
 
 
-    // Update is called once per frame
     void Update()
     {
         MoveToObjective();
