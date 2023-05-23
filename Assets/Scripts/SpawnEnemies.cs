@@ -19,6 +19,7 @@ public class SpawnEnemies : MonoBehaviour
 
     private void Spawn()
     {
+        // need to assign the start and end point here and this should fix it.
         Instantiate(enemyMob, _enemySpawner.position, _enemySpawner.rotation);
     }
 

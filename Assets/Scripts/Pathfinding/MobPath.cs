@@ -4,7 +4,7 @@ using System.IO;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-public class MobPath : Dijkstra
+public class MobPath : AStar
 
 {
     public Vector3 _endGoal;
