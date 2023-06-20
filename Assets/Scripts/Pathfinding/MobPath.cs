@@ -12,6 +12,7 @@ public class MobPath : AStar
     private float speed = 0.5f;
     private int currentIndex = 0;
 
+    //SpawnEnemies spawnEnemiesClass;
 
     void Update()
     {
@@ -19,7 +20,10 @@ public class MobPath : AStar
     }
 
 
-
+    private void Start()
+    {
+        //spawnEnemiesClass = FindObjectOfType<SpawnEnemies>();
+    }
 
 
     public void MoveToObjective()
@@ -28,11 +32,17 @@ public class MobPath : AStar
 
         List<Node> path = FindShortestPath(StartNode, EndNode); // dont recalculate every frame, consider it running when the tower is placed.
 
-        _endGoal = EndNode.transform.position;
-        _startGoal = StartNode.transform.position;
+       // _endGoal = path[path.Count-1].transform.position;//EndNode.transform.position;
+       // _startGoal = path[0].transform.position;//StartNode.transform.position;
+
+        if(path.Count <= 1 )
+        {
+            //MADE IT TO THE END
+            return;
+        }
 
         //Update start node
-        if (Vector3.Distance(transform.position, path[1].transform.position) < 0.3f)
+        if (Vector3.Distance(transform.position, path[1].transform.position) < 0.2f)
         {
             StartNode = path[1];
             //index++;
@@ -41,11 +51,11 @@ public class MobPath : AStar
         //use path[index] until your at the end(Updating index ++ when you reach the next node), then you only have to find Shortest Path() once.
 
 
-        transform.position = Vector3.MoveTowards(transform.position, path[currentIndex].transform.position, speed * Time.deltaTime);
-        if (Vector3.Distance(transform.position, path[currentIndex].transform.position) < 0.3f)
+        transform.position = Vector3.MoveTowards(transform.position, path[1].transform.position, speed * Time.deltaTime);
+  /*      if (Vector3.Distance(transform.position, path[1].transform.position) < 0.3f)
         {
-            currentIndex++; // dont go above path.count
-        }
+            currentIndex++; //todo: dont go above path.count
+        }*/
 
 
         for (int index = 0; index < path.Count - 1; index++)
